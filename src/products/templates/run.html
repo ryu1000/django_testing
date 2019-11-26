@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block head_addon %}
+<style type="text/css">
+
+.ajaxProgress {
+	display: none;	
+}
+
+.resultDisplay {
+	display: none;	
+}
+
+</style>
+{% endblock %}
+
+{% block content %}
+<h2>Run view</h2>
+<!-- <form action="." method="POST">
+	{% csrf_token %}
+	<input type="submit" value="Run">
+</form> -->
+
+<a href="javascript:exe_script()" class="updateButton" id="runBash">Run script</a>
+<div class="ajaxProgress">Please wait...</div>
+<div class="resultDisplay"></div>
+
+<!-- {% if result %}
+{{ result }}
+{% endif %} -->
+
+<script type="text/javascript">
+
+function exe_script() {
+	$('.ajaxProgress').show();
+	$('.resultDisplay').hide();
+	$('.resultDisplay').empty();
+	$.ajax({
+		url : '.',
+		type : "POST",
+		data : { csrfmiddlewaretoken : '{{ csrf_token }}' },
+		dataType : 'json',
+		success : function(result){
+			console.log(result)
+			$('.ajaxProgress').hide();
+			$('.resultDisplay').show();
+			$('.resultDisplay').append("Script completed!!<hr><p>".concat(result['name'], "</p>"))
+		}
+	})
+}
+
+</script>
+
+{% endblock %}

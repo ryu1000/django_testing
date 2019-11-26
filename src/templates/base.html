@@ -1,0 +1,17 @@
+<!doctype html>
+<html>
+<head>
+	<title>This is my new website with Django</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	{% block head_addon %}
+	{% endblock %}
+</head>
+<body>
+	<h1>My web site</h1>
+	{% block content %}
+		==========
+		Replace me
+		==========
+	{% endblock %}
+</body>
+</html>
