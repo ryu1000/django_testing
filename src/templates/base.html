@@ -8,11 +8,6 @@
 </head>
 <body>
 	<h1>My web site</h1>
-	{% if username %}
-	<h2>User: {{ username }}</h2>
-	{% endif %}
-	<a href="{% url 'log-out' %}">Log out</a>
-	<hr>
 	{% block content %}
 		==========
 		Replace me
